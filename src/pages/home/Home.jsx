@@ -6,10 +6,12 @@ import { getVideos } from "./../../services/videoService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import _ from "lodash";
+import { CircularProgress } from "@material-ui/core";
 
 const Home = () => {
   const [videos, setVideos] = useState([]);
   const [displayData, setDisplayData] = useState([]);
+  const [isFetching, setIsFetching] = useState(true);
 
   //helper order functgion
 
@@ -32,6 +34,7 @@ const Home = () => {
     const fetchVideos = async () => {
       try {
         const res = await getVideos();
+        setIsFetching(false);
         setVideos(res.data);
         setDisplayData(res.data);
       } catch (error) {
@@ -62,7 +65,10 @@ const Home = () => {
     }
     console.log(filteredVideos);
   };
-  return (
+
+  return isFetching ? (
+    <CircularProgress className="isFetching" color="secondary" />
+  ) : (
     <div className="homeContainer">
       <Leftbar data={displayData} handleOrderedSearch={handleOrderedSearch} />
       <Rightbar data={displayData} />

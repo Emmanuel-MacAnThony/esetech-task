@@ -1,0 +1,64 @@
+.panelContainer {
+  display: flex;
+  background-color: #0e1a2b;
+  flex-basis: 100%;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  padding: 1.8rem;
+  font-size: 1rem;
+}
+
+.panelContainerBox {
+  display: flex;
+  flex-basis: 100%;
+  position: relative;
+}
+
+.panelContainerLeft {
+  flex-basis: 20%;
+  background-image: linear-gradient(to left bottom, lightblue, pink);
+}
+
+.panelContainerRight {
+  flex-basis: 80%;
+}
+
+.movieTitle {
+  font-size: 1.5rem;
+  color: #ffffff;
+  padding: 1rem;
+}
+
+.movieInfo {
+  display: flex;
+}
+
+.movieReleaseDate {
+  font-size: 1rem;
+  color: #c1d1e8;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+.movieDescription {
+  padding-left: 1rem;
+  color: #c1d1e8;
+  flex-basis: 90%;
+}
+
+.movieRating {
+  background-color: blue;
+  color: #c1d1e8;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1rem;
+  flex-basis: 10%;
+}

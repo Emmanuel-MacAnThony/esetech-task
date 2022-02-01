@@ -1,0 +1,93 @@
+.leftContainer {
+  flex-basis: 30%;
+  background-color: #0e1a2b;
+  padding: 1rem;
+  position: relative;
+  height: 60vh;
+  margin-right: auto;
+}
+
+.leftContainerTitle {
+  font-size: 1.2rem;
+  color: #c1d1e8;
+  padding: 1rem 0rem;
+}
+
+.inputBox {
+  margin-top: 2rem;
+}
+
+.searchTitle {
+  color: #c1d1e8;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.searchBox {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  background-color: #182c47;
+  color: #c1d1e8;
+  font-size: 1rem;
+}
+
+.searchBox:focus {
+  outline: none;
+}
+
+.orderTitle {
+  color: #c1d1e8;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.orderBox {
+  padding: 0.8rem;
+  border: none;
+  background-color: #182c47;
+  color: #c1d1e8;
+  font-size: 1rem;
+  flex-basis: 90%;
+}
+
+.orderOption {
+  background-color: #0e1a2b;
+  color: #c1d1e8;
+  padding: 1rem;
+  border: none;
+  border-bottom: 1px solid lightblue;
+  border: radius 0;
+  font-size: 1rem;
+}
+
+.orderContainer {
+  display: flex;
+}
+
+.orderArrow {
+  color: #c1d1e8;
+  background-color: blue;
+  font-size: 2rem;
+  flex-basis: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clearButton {
+  width: 8rem;
+  border-radius: 0;
+  margin-top: 2rem;
+  background-color: blue;
+  border: none;
+  padding: 1rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c1d1e8;
+  position: absolute;
+  right: 1rem;
+  top: 80%;
+  cursor: pointer;
+}

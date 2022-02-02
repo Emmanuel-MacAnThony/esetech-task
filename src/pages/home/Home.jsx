@@ -28,6 +28,18 @@ const Home = () => {
     if (orderString === "redesc") {
       return _.orderBy(data, ["first_release_date"], ["desc"]);
     }
+
+    if (orderString === "none") {
+      return videos;
+    }
+  };
+
+  const search = (data, searchString) => {
+    let preparedSearchString = searchString.toLowerCase(); //to enable case-insensitive searching
+    let filteredVideos = videos.filter((video) =>
+      video.name.toLowerCase().includes(preparedSearchString)
+    );
+    return filteredVideos;
   };
 
   useEffect(() => {
@@ -46,31 +58,37 @@ const Home = () => {
     fetchVideos();
   }, []);
 
-  const handleOrderedSearch = (searchString, orderString) => {
-    let filteredVideos = displayData;
-    if (searchString) {
-      let preparedSearchString = searchString.toLowerCase(); //to enable case-insensitive searching
-      filteredVideos = videos.filter((video) =>
-        video.name.toLowerCase().includes(preparedSearchString)
-      );
-      setDisplayData(filteredVideos);
+  const handleOrder = (orderString, indicator) => {
+    //indicator indicates if a filtering operation has been carried out prior to ordering
+    if (indicator) {
+      let orderedData = order(displayData, orderString);
+      setDisplayData(orderedData);
     } else {
-      filteredVideos = videos;
-      setDisplayData(filteredVideos); //this takes care of scenario where after typing and updating displayed data , you click clear.
+      let orderedData = order(videos, orderString);
+      setDisplayData(orderedData);
     }
+  };
 
-    if (orderString !== "none") {
-      let orderedVideo = order(filteredVideos, orderString);
-      setDisplayData(orderedVideo);
+  const handleSearch = (searchString, indicator) => {
+    //indicator indicates if an ordering operation has been carried out prior to searching
+    if (indicator !== "none") {
+      let filteredData = search(displayData, searchString);
+      setDisplayData(order(filteredData, indicator));
+    } else {
+      let filteredData = search(videos, searchString);
+      setDisplayData(filteredData);
     }
-    console.log(filteredVideos);
   };
 
   return isFetching ? (
     <CircularProgress className="isFetching" color="secondary" />
   ) : (
     <div className="homeContainer">
-      <Leftbar data={displayData} handleOrderedSearch={handleOrderedSearch} />
+      <Leftbar
+        data={displayData}
+        handleOrder={handleOrder}
+        handleSearch={handleSearch}
+      />
       <Rightbar data={displayData} />
     </div>
   );

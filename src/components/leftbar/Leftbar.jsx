@@ -1,16 +1,20 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import "./leftbar.css";
 
-const Leftbar = ({ handleOrderedSearch }) => {
+const Leftbar = ({ handleOrder, handleSearch }) => {
   const search = useRef();
   const order = useRef();
 
-  const handleChange = () => {
-    handleOrderedSearch(search.current.value, order.current.value);
+  const onSearch = () => {
+    handleSearch(search.current.value, order.current.value);
+  };
+
+  const onOrder = () => {
+    handleOrder(order.current.value, search.current.value);
   };
 
   const handleClear = () => {
-    handleOrderedSearch("", "none");
+    handleOrder("none", "");
   };
 
   return (
@@ -27,7 +31,7 @@ const Leftbar = ({ handleOrderedSearch }) => {
             type="text"
             className="searchBox"
             ref={search}
-            onChange={handleChange}
+            onChange={onSearch}
           />
         </div>
         <div className="inputBox">
@@ -38,7 +42,7 @@ const Leftbar = ({ handleOrderedSearch }) => {
             <div className="orderArrow">&#x2191;</div>
             <select
               id="orderInput"
-              onChange={handleChange}
+              onChange={onOrder}
               className="orderBox"
               ref={order}
             >
